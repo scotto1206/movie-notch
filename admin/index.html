@@ -9,30 +9,20 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Load Netlify Identity
-        const identityScript = document.createElement('script');
-        identityScript.src =
-          'https://identity.netlify.com/v1/netlify-identity-widget.js';
-        identityScript.onload = () => {
-          if (window.netlifyIdentity) {
+        const loadScript = (src) =>
+          new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+          });
+
+        // Load Netlify Identity first
+        loadScript('https://identity.netlify.com/v1/netlify-identity-widget.js')
+          .then(() => {
             const identity = window.netlifyIdentity;
 
-            // Confirmation flow
-            const token = new URLSearchParams(
-              window.location.hash.substring(1)
-            ).get('confirmation_token');
-            if (token) {
-              identity
-                .confirm(token, true)
-                .then(() => {
-                  window.location.href = '/admin';
-                })
-                .catch((err) => {
-                  alert('Email confirmation failed: ' + err.message);
-                });
-            }
-
-            // Ensure identity is initialized before any login
             identity.on('init', (user) => {
               if (!user) {
                 identity.on('login', () => {
@@ -41,15 +31,35 @@
               }
             });
 
-            identity.init();
-          }
-        };
-        document.body.appendChild(identityScript);
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            const confirmationToken = params.get('confirmation_token');
 
-        // Load Decap CMS
-        const cmsScript = document.createElement('script');
-        cmsScript.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
-        document.body.appendChild(cmsScript);
+            if (confirmationToken) {
+              console.log('Found confirmation token:', confirmationToken);
+              identity
+                .confirm(confirmationToken, true)
+                .then(() => {
+                  console.log('Email confirmed successfully.');
+                  window.location.href = '/admin';
+                })
+                .catch((err) => {
+                  console.error('Email confirmation failed:', err);
+                  alert('Email confirmation failed: ' + err.message);
+                });
+            } else {
+              identity.init();
+            }
+          })
+          .then(() => {
+            // Load Decap CMS after identity init
+            return loadScript(
+              'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js'
+            );
+          })
+          .catch((err) => {
+            console.error('Error loading scripts:', err);
+          });
       });
     </script>
   </body>
