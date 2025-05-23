@@ -21,4 +21,10 @@ collections:
           default: 'Scott Lynn',
         }
       - { label: 'Date', name: 'date', widget: 'datetime' }
+      - {
+          label: 'Layout',
+          name: 'layout',
+          widget: 'hidden',
+          default: 'post.njk',
+        }
       - { label: 'Body', name: 'body', widget: 'markdown' }
