@@ -58,13 +58,14 @@
                 document.location.href = '/admin/';
               });
 
-              identity.init();
+              // ❌ DO NOT call identity.init() here again
             });
 
+            // ✅ Call it only once, here
             identity.init();
           })
           .then(() => {
-            // Load Decap CMS after Identity
+            // Load Decap CMS after Identity is ready
             return loadScript(
               'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js'
             );
