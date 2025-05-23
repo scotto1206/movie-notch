@@ -53,21 +53,18 @@
                 return;
               }
 
-              if (!user) {
-                identity.on('login', (user) => {
-                  console.log('[Identity] Login successful:', user);
-                  document.location.href = '/admin/';
-                });
+              identity.on('login', (user) => {
+                console.log('[Identity] Login successful:', user);
+                document.location.href = '/admin/';
+              });
 
-                console.log('[Identity] Showing login popup...');
-                identity.open(); // Triggers login popup
-              }
+              identity.init();
             });
 
             identity.init();
           })
           .then(() => {
-            // Load Decap CMS after Identity is initialized
+            // Load Decap CMS after Identity
             return loadScript(
               'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js'
             );
