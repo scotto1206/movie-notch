@@ -3,24 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <title>Movie Notch CMS</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
     <div id="nc-root"></div>
 
     <script>
-      // Handle invite_token or recovery_token
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
+      document.addEventListener('DOMContentLoaded', function () {
+        // Load Netlify Identity
+        const identityScript = document.createElement('script');
+        identityScript.src =
+          'https://identity.netlify.com/v1/netlify-identity-widget.js';
+        identityScript.onload = () => {
+          // Init Identity
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', (user) => {
+              if (!user) {
+                window.netlifyIdentity.on('login', () => {
+                  document.location.href = '/admin/';
+                });
+              }
             });
+            window.netlifyIdentity.init();
           }
-        });
-        window.netlifyIdentity.init();
-      }
+        };
+        document.body.appendChild(identityScript);
+
+        // Load Decap CMS
+        const cmsScript = document.createElement('script');
+        cmsScript.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+        document.body.appendChild(cmsScript);
+      });
     </script>
   </body>
 </html>
