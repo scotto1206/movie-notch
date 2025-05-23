@@ -18,47 +18,62 @@
             document.body.appendChild(script);
           });
 
-        // Load Netlify Identity first
+        // Load Netlify Identity
         loadScript('https://identity.netlify.com/v1/netlify-identity-widget.js')
           .then(() => {
             const identity = window.netlifyIdentity;
 
-            identity.on('init', (user) => {
-              if (!user) {
-                identity.on('login', () => {
-                  document.location.href = '/admin/';
-                });
-              }
-            });
+            if (!identity) {
+              console.error('[Identity] Netlify Identity failed to load.');
+              return;
+            }
 
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
             const confirmationToken = params.get('confirmation_token');
 
-            if (confirmationToken) {
-              console.log('Found confirmation token:', confirmationToken);
-              identity
-                .confirm(confirmationToken, true)
-                .then(() => {
-                  console.log('Email confirmed successfully.');
-                  window.location.href = '/admin';
-                })
-                .catch((err) => {
-                  console.error('Email confirmation failed:', err);
-                  alert('Email confirmation failed: ' + err.message);
+            identity.on('init', (user) => {
+              console.log('[Identity] Init complete. User:', user);
+
+              if (confirmationToken) {
+                console.log(
+                  '[Identity] Found confirmation token:',
+                  confirmationToken
+                );
+                identity
+                  .confirm(confirmationToken, true)
+                  .then(() => {
+                    console.log('[Identity] Email confirmed successfully.');
+                    window.location.href = '/admin';
+                  })
+                  .catch((err) => {
+                    console.error('[Identity] Email confirmation failed:', err);
+                    alert('Email confirmation failed: ' + err.message);
+                  });
+                return;
+              }
+
+              if (!user) {
+                identity.on('login', (user) => {
+                  console.log('[Identity] Login successful:', user);
+                  document.location.href = '/admin/';
                 });
-            } else {
-              identity.init();
-            }
+
+                console.log('[Identity] Showing login popup...');
+                identity.open(); // Triggers login popup
+              }
+            });
+
+            identity.init();
           })
           .then(() => {
-            // Load Decap CMS after identity init
+            // Load Decap CMS after Identity is initialized
             return loadScript(
               'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js'
             );
           })
           .catch((err) => {
-            console.error('Error loading scripts:', err);
+            console.error('[Admin] Error loading scripts:', err);
           });
       });
     </script>
