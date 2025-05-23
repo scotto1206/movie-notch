@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <title>Movie Notch CMS</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- Decap CMS will mount here -->
+    <!-- Required mount point for Decap CMS -->
     <div id="nc-root"></div>
+
+    <!-- Load Decap CMS AFTER the page loads -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+        script.onload = () => {
+          console.log('Decap CMS loaded');
+        };
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
