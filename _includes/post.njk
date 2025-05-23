@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+
+<div class="container">
+  <h3>{{ title }}</h3>
+  <p class="author">Written by</p>
+  <p class="author">{{ author }}</p>
+  <p class="date">{{ date | date("MMMM d, yyyy") }}</p>
+
+  <div class="post-content">
+    {{ content | safe }}
+  </div>
+
+  <a class="back-link" href="/">&#8592; Back to Home</a>
+</div>

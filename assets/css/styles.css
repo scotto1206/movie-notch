@@ -1,0 +1,116 @@
+body {
+  font-family: 'Courier Prime', monospace;
+  background: #1e1e1e;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #1e1e1e;
+  color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.logo img {
+  width: 80px;
+}
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #1e1e1e;
+}
+
+.post {
+  border-bottom: 1px solid #444;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.post h2 {
+  margin: 0;
+}
+
+.post h2 a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.post h2 a:hover {
+  text-decoration: underline;
+}
+
+.post p.date {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.post p {
+  color: #ffffff;
+}
+
+h3 {
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.author {
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.date {
+  color: gray;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.post-content {
+  text-align: left;
+  color: #ffffff;
+}
+
+.quote {
+  display: block;
+  margin: 2rem auto;
+  padding: 0 10rem;
+  text-align: center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

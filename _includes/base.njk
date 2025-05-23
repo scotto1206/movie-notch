@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+    <a href="/">
+      <img src="/assets/images/logo.svg" width="40" height="40" alt="Movie Notch Logo" />
+      </a>
+    </div>
+    <div class="nav-title">Movie Notch</div>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+</body>
+</html>
