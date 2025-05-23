@@ -9,12 +9,11 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Load Netlify Identity
+        // Load Netlify Identity widget
         const identityScript = document.createElement('script');
         identityScript.src =
           'https://identity.netlify.com/v1/netlify-identity-widget.js';
         identityScript.onload = () => {
-          // Init Identity
           if (window.netlifyIdentity) {
             window.netlifyIdentity.on('init', (user) => {
               if (!user) {
@@ -23,6 +22,23 @@
                 });
               }
             });
+
+            // Process confirmation token if it's present in the URL
+            const token = new URLSearchParams(
+              window.location.hash.substring(1)
+            ).get('confirmation_token');
+            if (token) {
+              window.netlifyIdentity
+                .confirm(token, true)
+                .then(() => {
+                  // After confirmation, redirect to clean admin
+                  window.location.href = '/admin';
+                })
+                .catch((err) => {
+                  alert('Confirmation failed: ' + err.message);
+                });
+            }
+
             window.netlifyIdentity.init();
           }
         };
