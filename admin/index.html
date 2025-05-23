@@ -9,37 +9,39 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Load Netlify Identity widget
+        // Load Netlify Identity
         const identityScript = document.createElement('script');
         identityScript.src =
           'https://identity.netlify.com/v1/netlify-identity-widget.js';
         identityScript.onload = () => {
           if (window.netlifyIdentity) {
-            window.netlifyIdentity.on('init', (user) => {
+            const identity = window.netlifyIdentity;
+
+            // Confirmation flow
+            const token = new URLSearchParams(
+              window.location.hash.substring(1)
+            ).get('confirmation_token');
+            if (token) {
+              identity
+                .confirm(token, true)
+                .then(() => {
+                  window.location.href = '/admin';
+                })
+                .catch((err) => {
+                  alert('Email confirmation failed: ' + err.message);
+                });
+            }
+
+            // Ensure identity is initialized before any login
+            identity.on('init', (user) => {
               if (!user) {
-                window.netlifyIdentity.on('login', () => {
+                identity.on('login', () => {
                   document.location.href = '/admin/';
                 });
               }
             });
 
-            // Process confirmation token if it's present in the URL
-            const token = new URLSearchParams(
-              window.location.hash.substring(1)
-            ).get('confirmation_token');
-            if (token) {
-              window.netlifyIdentity
-                .confirm(token, true)
-                .then(() => {
-                  // After confirmation, redirect to clean admin
-                  window.location.href = '/admin';
-                })
-                .catch((err) => {
-                  alert('Confirmation failed: ' + err.message);
-                });
-            }
-
-            window.netlifyIdentity.init();
+            identity.init();
           }
         };
         document.body.appendChild(identityScript);
