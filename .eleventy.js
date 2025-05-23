@@ -17,6 +17,11 @@ module.exports = function (eleventyConfig) {
     return `<div class="quote">${content}</div>`;
   });
 
+  // ✅ Custom collection for blog posts
+  eleventyConfig.addCollection('posts', function (collectionApi) {
+    return collectionApi.getFilteredByGlob('./posts/*.md');
+  });
+
   // ✅ Directory structure config
   return {
     dir: {
