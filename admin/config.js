@@ -1,0 +1,30 @@
+CMS.init({
+  config: {
+    backend: {
+      name: 'git-gateway',
+      branch: 'main',
+    },
+    media_folder: 'assets/images/uploads',
+    public_folder: '/assets/images/uploads',
+    collections: [
+      {
+        name: 'posts',
+        label: 'Blog Posts',
+        folder: 'posts',
+        create: true,
+        slug: '{{slug}}',
+        fields: [
+          { label: 'Title', name: 'title', widget: 'string' },
+          {
+            label: 'Author',
+            name: 'author',
+            widget: 'string',
+            default: 'Scott Lynn',
+          },
+          { label: 'Date', name: 'date', widget: 'datetime' },
+          { label: 'Body', name: 'body', widget: 'markdown' },
+        ],
+      },
+    ],
+  },
+});

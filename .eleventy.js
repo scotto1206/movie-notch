@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(value, { zone: 'utc' }).toFormat(format);
   });
 
+  eleventyConfig.addPassthroughCopy('admin');
+
   eleventyConfig.addPairedShortcode('quote', (content) => {
     return `<div class="quote">${content}</div>`;
   });
