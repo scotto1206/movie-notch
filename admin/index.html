@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <title>Movie Notch CMS</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- Required mount point for Decap CMS -->
     <div id="nc-root"></div>
 
-    <!-- Load Decap CMS AFTER the page loads -->
     <script>
-      window.addEventListener('DOMContentLoaded', function () {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
-        script.onload = () => {
-          console.log('Decap CMS loaded');
-        };
-        document.body.appendChild(script);
-      });
+      // Handle invite_token or recovery_token
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+        window.netlifyIdentity.init();
+      }
     </script>
   </body>
 </html>
