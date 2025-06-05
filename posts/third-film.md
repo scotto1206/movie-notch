@@ -1,7 +1,10 @@
 ---
-title: Third Film
+layout: post.njk
+title: Second Film
 author: Scott Lynn
-date: 2025-05-23T12:08:00.000Z
+date: 2025-06-02
+excerpt: This is the content of the first blog post.
+tags: post
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lorem ac velit varius tincidunt. Pellentesque a justo eget leo consequat porttitor. Integer dapibus urna sem, sed gravida purus fermentum id.
