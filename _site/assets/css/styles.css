@@ -114,3 +114,30 @@ h3 {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+@media (max-width: 800px) {
+  .nav-title {
+    font-size: 1.2rem;
+  }
+
+  .post h2 {
+    font-size: 1.2rem;
+  }
+
+  .logo img {
+    width: 60px;
+    height: auto;
+  }
+
+  .container {
+    padding: 1rem 0.5rem;
+    width: 95%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .quote {
+    padding: 0 2rem;
+  }
+}
