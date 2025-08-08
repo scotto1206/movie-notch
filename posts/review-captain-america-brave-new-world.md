@@ -3,6 +3,8 @@ title: "Review - Captain America: Brave New World"
 author: MC
 date: 2025-08-10T19:12:00.000-04:00
 layout: post.njk
+excerpt: It's a new world, but is it a brave one, or not?
+tags: post
 ---
 
 I hate it when the best part of a film experience is watching the trailer.
