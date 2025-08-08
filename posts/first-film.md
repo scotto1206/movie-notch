@@ -16,7 +16,6 @@ Out jump 3 boys shouting, punching each other in the arms, and ready to sprint i
 Mother - Keep your cool boys, here's $20 to get a movie and some snacks. I'll be here in the car, you have 20 minutes!
 {% endquote %}
 
-
 {% quote %}
 Boy 1- Okay okay, we won't take all day. Just give me the cash so we can get going, it's freezing out here.
 {% endquote %}
@@ -41,16 +40,16 @@ Cut to
 
 Int. Basement - Night
 
-It's 10:30 and the parents are off to bed after ensuring the boys are in their sleeping bags ready to go to bed as well. They forgot all about the movie because they spent all of their time that night playing Goldeneye on the N64. After about 20 minutes of stifled giggles and trying to make each other laugh and not be too loud the adults can hear them. They slowly get up after the coast feels clear. There was never an intention of actually going to bed. After all, this was a sleepover and they're pulling an all nighter.
+It's 10:30 and the parents are off to bed after ensuring the boys are in their sleeping bags ready to go to bed as well. They forgot all about the movie because they spent all of their time that night playing Goldeneye on the N64. After about 20 minutes of stifled giggles and trying to make each other laugh and not be too loud the adults can hear them. They slowly get up after the coast feels clear. There was never an intention of actually going to bed. After all, this was a sleepover and they're pulling an all-nighter.
 
 After sneaking to the kitchen to get some pop and their snacks, they retreat to the basement to put on some late night entertainment. Cracking open their drinks to get hopped up on sugar to have regretful stomach aches 2 hours later they settle into their sleeping bags. 
 
-Cracking open the VHS box and powering on the old tube TV, Boy 2 can feel the static from the screen make his hair stand on end as he puts the movie in. As the Coming Attractions end and the feature film starts, the boys prepare for an epic night. 
+Prying open the VHS box and powering on the old tube TV, Boy 2 can feel the static from the screen make his hair stand on end as he puts the movie in. As the Coming Attractions end and the feature film starts, the boys prepare for an epic night. 
 
 Little do they know it, but this will be one of the best nights of their lives.
 
 {% quote %}
-Movie Notch is a nostalgic look back at the movies that made up our childhood. Embracing the good times and rehashing movie quotes endlessly in the group chat to this day. Those movies and experiences make up a lot of who we are today and what we yearn for still. Taking a critical look at what Hollywood currently offers in hopes we can rekindle some of our love for cinema still.
+Movie Notch is a nostalgic look back at the movies that made up our childhood. Embracing the good times and rehashing movie quotes endlessly in the group chat to this day. Those movies and experiences make up a lot of who we are today and what we yearn for still. Taking a critical look at what Hollywood currently offers in hopes we can rekindle some of our love for cinema.
 {% endquote %}
 
 If you see yourself in this story, then Movie Notch might be the place for you. Come, hang out with us as we talk about films new and old. As we get older and farther away from friends we were with, movies still connect us. 
