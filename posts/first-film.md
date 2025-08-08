@@ -3,7 +3,7 @@ title: Welcome to Movie Notch
 author: SL
 date: 2025-08-08T15:28:00.000-04:00
 layout: post.njk
-excerpt: This is the content of the first blog post.
+excerpt: A look into the inspiration for Movie Notch.
 tags: post
 ---
 Ext. Movie Rental Store - Day
